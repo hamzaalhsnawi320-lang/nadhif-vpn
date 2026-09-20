@@ -1,49 +1,33 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
-}
- // شيل اي صورة او فيديو موجودة بالصفحة بالقوة
-setInterval(() => {
-  document.querySelectorAll('img, video, iframe, audio').forEach(el => el.remove());
-}, 500);
-</script>
-<style>
-  img, video, iframe, audio { display: none !important; width:0 !important; height:0 !important; }
-</style>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نظيف VPN</title>
+<title>نظيف - حجب شامل</title>
 <style>
-  body { font-family: sans-serif; background: #f5f7fb; margin:0; padding:0; text-align:center; }
-  .container { max-width: 700px; margin: auto; padding: 20px; background: white; border-radius: 16px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-  img { width: 100%; border-radius: 12px; margin: 15px 0; }
-  video { width: 100%; border-radius: 12px; margin: 15px 0; }
-  h1 { color: #5b5bff; }
+  /* هذا يخفي كل الصور والفيديوهات */
+  img, video, iframe, audio, picture, source {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  body { font-family: sans-serif; text-align: center; padding: 20px; background: #f0f0f0; }
+  .box { background: white; padding: 30px; border-radius: 15px; max-width: 500px; margin: 50px auto; }
 </style>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+  // يحذف اي صورة او فيديو يحاول يطلع
+  setInterval(() => {
+    document.querySelectorAll('img, video, iframe, audio').forEach(el => el.remove());
+  }, 500);
+</script>
 </head>
 <body>
-  <div class="container">
-    <h1>نظيف VPN</h1>
-    <p>أسرع وأأمن VPN للعراق</p>
-
-    <!-- الصورة الرئيسية -->
-    <img src="images/logo.png" alt="صورة التطبيق" onerror="this.src='https://via.placeholder.com/600x400?text=Nadhif+VPN'">
-
-    <!-- قسم الصور -->
-    <h3>صور من التطبيق</h3>
-    <img src="images/screen1.jpg" alt="screen1" onerror="this.style.display='none'">
-    <img src="images/screen2.jpg" alt="screen2" onerror="this.style.display='none'">
-
-    <!-- قسم الفيديو -->
-    <h3>فيديو الشرح</h3>
-    <video controls poster="images/logo.png">
-      <source src="videos/demo.mp4" type="video/mp4">
-      متصفحك لا يدعم تشغيل الفيديو
-    </video>
-
-    <p>اذا ما ظهرت الصور، تأكد انك رفعت مجلد images و videos</p>
+  <div class="box">
+    <h1>✅ تم تفعيل الحجب الشامل</h1>
+    <p>تطبيق نظيف الان يحظر جميع الصور والفيديوهات</p>
   </div>
 </body>
 </html>
