@@ -1,3 +1,38 @@
-git add .
-git commit -m "اضافة الصور والفيديوهات"
-git push
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظيف VPN</title>
+<style>
+  body { font-family: sans-serif; background: #f5f7fb; margin:0; padding:0; text-align:center; }
+  .container { max-width: 700px; margin: auto; padding: 20px; background: white; border-radius: 16px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+  img { width: 100%; border-radius: 12px; margin: 15px 0; }
+  video { width: 100%; border-radius: 12px; margin: 15px 0; }
+  h1 { color: #5b5bff; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>نظيف VPN</h1>
+    <p>أسرع وأأمن VPN للعراق</p>
+
+    <!-- الصورة الرئيسية -->
+    <img src="images/logo.png" alt="صورة التطبيق" onerror="this.src='https://via.placeholder.com/600x400?text=Nadhif+VPN'">
+
+    <!-- قسم الصور -->
+    <h3>صور من التطبيق</h3>
+    <img src="images/screen1.jpg" alt="screen1" onerror="this.style.display='none'">
+    <img src="images/screen2.jpg" alt="screen2" onerror="this.style.display='none'">
+
+    <!-- قسم الفيديو -->
+    <h3>فيديو الشرح</h3>
+    <video controls poster="images/logo.png">
+      <source src="videos/demo.mp4" type="video/mp4">
+      متصفحك لا يدعم تشغيل الفيديو
+    </video>
+
+    <p>اذا ما ظهرت الصور، تأكد انك رفعت مجلد images و videos</p>
+  </div>
+</body>
+</html>
