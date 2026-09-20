@@ -1,1 +1,15 @@
-{"name":"نظيف VPN","short_name":"نظيف","start_url":".","display":"standalone","background_color":"#f6fbf7","theme_color":"#0a6b3a"}
+{
+  "name": "نظيف - لحجب المواقع الاباحية",
+  "short_name": "نظيف",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6fbf7",
+  "theme_color": "#0a6b3a",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/565/565422.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
