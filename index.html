@@ -3,31 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نظيف - حجب شامل</title>
+<title>نظيف VPN - حماية شباب الحلة</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="images/logo.png">
 <style>
-  /* هذا يخفي كل الصور والفيديوهات */
-  img, video, iframe, audio, picture, source {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-  body { font-family: sans-serif; text-align: center; padding: 20px; background: #f0f0f0; }
-  .box { background: white; padding: 30px; border-radius: 15px; max-width: 500px; margin: 50px auto; }
+  body { font-family: sans-serif; background: #0f172a; color: white; text-align: center; margin: 0; padding: 0; }
+  .container { max-width: 500px; margin: 50px auto; padding: 20px; }
+  .logo { width: 120px; height: 120px; border-radius: 30px; background: white; padding: 10px; margin-bottom: 20px; }
+  h1 { color: #22c55e; }
+  .card { background: #1e293b; padding: 25px; border-radius: 15px; margin-top: 20px; }
+  .btn { background: #22c55e; color: white; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; display: block; margin-top: 20px; text-decoration: none; }
 </style>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
-  }
-  // يحذف اي صورة او فيديو يحاول يطلع
-  setInterval(() => {
-    document.querySelectorAll('img, video, iframe, audio').forEach(el => el.remove());
-  }, 500);
-</script>
 </head>
 <body>
-  <div class="box">
-    <h1>✅ تم تفعيل الحجب الشامل</h1>
-    <p>تطبيق نظيف الان يحظر جميع الصور والفيديوهات</p>
+  <div class="container">
+    <img src="images/logo.png" class="logo" alt="شعار نظيف" onerror="this.style.display='none'">
+    <h1>نظيف VPN</h1>
+    <p>تطبيق لحماية شباب الحلة من المواقع الإباحية</p>
+    <div class="card">
+      <h3>✅ التطبيق يعمل</h3>
+      <p>قريباً سيتم إطلاق نسخة الـ APK التي تحجب جميع المواقع الإباحية في الجهاز بالكامل</p>
+      <a href="#" class="btn">تحميل التطبيق قريباً</a>
+    </div>
   </div>
+<script>
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }
+</script>
 </body>
 </html>
