@@ -1,5 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl"><script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+ // شيل اي صورة او فيديو موجودة بالصفحة بالقوة
+setInterval(() => {
+  document.querySelectorAll('img, video, iframe, audio').forEach(el => el.remove());
+}, 500);
+</script>
+<style>
+  img, video, iframe, audio { display: none !important; width:0 !important; height:0 !important; }
+</style>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
