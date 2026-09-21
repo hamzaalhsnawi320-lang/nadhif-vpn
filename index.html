@@ -3,31 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نظيف VPN - حماية شباب الحلة</title>
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="images/logo.png">
+<title>نظيف - حماية عائلتك</title>
 <style>
-  body { font-family: sans-serif; background: #0f172a; color: white; text-align: center; margin: 0; padding: 0; }
-  .container { max-width: 500px; margin: 50px auto; padding: 20px; }
-  .logo { width: 120px; height: 120px; border-radius: 30px; background: white; padding: 10px; margin-bottom: 20px; }
-  h1 { color: #22c55e; }
-  .card { background: #1e293b; padding: 25px; border-radius: 15px; margin-top: 20px; }
-  .btn { background: #22c55e; color: white; padding: 15px 30px; border: none; border-radius: 10px; font-size: 18px; display: block; margin-top: 20px; text-decoration: none; }
+  body{font-family:tajawal,Arial;text-align:center;background:#0f172a;color:white;padding:20px}
+  .box{background:white;color:#0f172a;border-radius:20px;padding:25px;margin-top:20px}
+  .btn{width:100%;padding:18px;background:#22c55e;color:white;border:none;border-radius:15px;font-size:20px;font-weight:bold}
+  .btn:disabled{background:gray}
+  .ayah{font-size:22px;color:#16a34a;margin:20px 0}
 </style>
 </head>
 <body>
-  <div class="container">
-    <img src="images/logo.png" class="logo" alt="شعار نظيف" onerror="this.style.display='none'">
-    <h1>نظيف VPN</h1>
-    <p>تطبيق لحماية شباب الحلة من المواقع الإباحية</p>
-    <div class="card">
-      <h3>✅ التطبيق يعمل</h3>
-      <p>قريباً سيتم إطلاق نسخة الـ APK التي تحجب جميع المواقع الإباحية في الجهاز بالكامل</p>
-      <a href="#" class="btn">تحميل التطبيق قريباً</a>
-    </div>
-  </div>
+
+<h1>تطبيق نظيف 🛡️</h1>
+<select id="lang" onchange="setLang(this.value)">
+  <option value="ar">🇮🇶 عربي عراقي</option>
+  <option value="ku">🇮🇶 كوردي</option>
+  <option value="en">🇬🇧 English</option>
+</select>
+
+<div class="box" id="mainBox">
+  <h2 id="t1">احمي عائلتك بضغطة وحدة</h2>
+  <p id="t2">التطبيق يحجب المواقع الاباحية حتى لو شغلت VPN</p>
+  <p class="ayah" id="ayah">"قُل لِّلْمُؤْمِنِينَ يَغُضُّوا مِنْ أَبْصَارِهِمْ"</p>
+  <button class="btn" id="activateBtn" onclick="activate()">فعّل الحماية لـ 30 يوم 🔒</button>
+  <p id="status"></p>
+  <small>لا نحفظ ما تتصفحه ابدا - كلشي بجهازك فقط والله شاهد</small>
+</div>
+
 <script>
-if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }
+// 30 يوم قفل حتى بدون نت
+function activate(){
+  const end = Date.now() + 30*24*60*60*1000;
+  localStorage.setItem('nazeef_lock', end);
+  checkLock();
+}
+
+function checkLock(){
+  const end = localStorage.getItem('nazeef_lock');
+  if(end && Date.now() < end){
+    const days = Math.ceil((end - Date.now())/(24*60*60*1000));
+    document.getElementById('mainBox').innerHTML = 
+      `<h2>✅ الحماية مفعلة</h2><p>باقي ${days} يوم</p><p class="ayah">انت اقوى من هاي اللحظة - توضأ وصلي ركعتين</p><button class="btn" disabled>مقفول 🔒</button>`;
+  }
+}
+
+function setLang(l){
+  if(l=='ku'){t1.innerText='خێزانەکەت بپارێزە'; t2.innerText='سایتی خراپ قەدەغە دەکات تەنانەت VPN'; activateBtn.innerText='پاراستن چالاک بکە 🔒';}
+  if(l=='en'){document.dir='ltr'; t1.innerText='Protect your family in one tap'; t2.innerText='Blocks adult sites even with VPN'; activateBtn.innerText='Activate 30 days protection 🔒';}
+  if(l=='ar'){document.dir='rtl'; t1.innerText='احمي عائلتك بضغطة وحدة'; t2.innerText='التطبيق يحجب المواقع الاباحية حتى لو شغلت VPN'; activateBtn.innerText='فعّل الحماية لـ 30 يوم 🔒';}
+}
+
+checkLock();
 </script>
 </body>
 </html>
